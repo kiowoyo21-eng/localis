@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LOCALISTHENICS</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+<header><div><div class="eyebrow">LOCAL • ADAPTIVE • CALISTHENICS</div><h1>LOCALISTHENICS</h1><p>Start at Level 0. Earn every movement.</p></div><button id="profileBtn">Profile</button></header>
+<nav><button class="tab active" data-tab="today">Today</button><button class="tab" data-tab="skills">Skills</button><button class="tab" data-tab="calendar">Calendar</button><button class="tab" data-tab="history">History</button></nav>
+<main>
+<section id="today" class="panel active">
+<div class="hero card"><div><span id="sessionType" class="pill"></span><h2 id="sessionName"></h2><p id="sessionDesc"></p></div><div class="ring"><b id="doneCount">0</b><span>logged</span></div></div>
+<div class="card"><h3>Warm-up <small>~2 min</small></h3><div id="warmup"></div></div>
+<div class="card"><div class="row"><h3>Main work</h3><span class="muted">Log what actually happened</span></div><div id="workout"></div></div>
+<div class="card"><h3>Cooldown <small>~1 min</small></h3><div id="cooldown"></div></div>
+<button id="finish" class="primary">Finish session</button>
+</section>
+<section id="skills" class="panel"><div class="card"><h2>Skill Map</h2><p class="muted">Locked → Training → Unlocked. Your performance decides progression.</p><div id="skillTree"></div></div></section>
+<section id="calendar" class="panel"><div class="card"><div class="row"><button id="prevMonth">‹</button><h2 id="monthTitle"></h2><button id="nextMonth">›</button></div><div class="week"><b>Sun</b><b>Mon</b><b>Tue</b><b>Wed</b><b>Thu</b><b>Fri</b><b>Sat</b></div><div id="calendarGrid" class="calendar"></div><div class="legend"><span>● Build</span><span>● Light</span><span>● Rehab</span></div></div></section>
+<section id="history" class="panel"><div class="card"><h2>History</h2><div id="historyList"></div></div></section>
+</main>
+</div>
+<dialog id="profileDialog"><form method="dialog"><h2>Your profile</h2><label>Height (cm)<input id="height" type="number" min="100" max="250"></label><label>Weight (kg)<input id="weight" type="number" min="25" max="300" step=".1"></label><label>Equipment<input value="Light dumbbells, resistance bands, dip bars" disabled></label><div class="actions"><button>Cancel</button><button id="saveProfile" value="default" class="primary">Save</button></div></form></dialog>
+<dialog id="refDialog"><form method="dialog"><button class="close">×</button><h2 id="refTitle"></h2><div class="demo" id="refDemo"></div><p id="refHow"></p><h4>Form cues</h4><ul id="refCues"></ul><button class="primary">Got it</button></form></dialog>
+<script src="app.js"></script>
+</body></html>
