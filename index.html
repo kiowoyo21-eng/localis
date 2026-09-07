@@ -23,6 +23,14 @@
 </main>
 </div>
 <dialog id="profileDialog"><form method="dialog"><h2>Your profile</h2><label>Height (cm)<input id="height" type="number" min="100" max="250"></label><label>Weight (kg)<input id="weight" type="number" min="25" max="300" step=".1"></label><label>Equipment<input value="Light dumbbells, resistance bands, dip bars" disabled></label><div class="actions"><button>Cancel</button><button id="saveProfile" value="default" class="primary">Save</button></div></form></dialog>
-<dialog id="refDialog"><form method="dialog"><button class="close">×</button><h2 id="refTitle"></h2><div class="demo" id="refDemo"></div><p id="refHow"></p><h4>Form cues</h4><ul id="refCues"></ul><button class="primary">Got it</button></form></dialog>
+<dialog id="refDialog"><form method="dialog"><button class="close">×</button><h2 id="refTitle"></h2>
+<div class="demo visual-demo" id="refDemo"></div>
+<p id="refHow"></p>
+<div class="ref-grid">
+  <div><h4>Form cues</h4><ul id="refCues"></ul></div>
+  <div><h4>Common mistakes</h4><ul id="refMistakes"></ul></div>
+</div>
+<div class="ref-path"><div><span>Easier</span><b id="refRegression">—</b></div><div><span>Next</span><b id="refProgression">—</b></div></div>
+<button class="primary">Got it</button></form></dialog>
 <script src="app.js"></script>
 </body></html>
