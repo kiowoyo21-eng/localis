@@ -123,6 +123,150 @@ const exerciseMeta = {
 }
 };
 
+
+const movementGuide = {
+"Wall Push-up":{
+ start:"Stand tall facing the wall. Hands at chest height, slightly wider than shoulders. Arms straight.",
+ end:"Bring your chest toward the wall by bending the elbows, then press back to the start.",
+ motion:"Chest moves toward wall, then away",
+ startIcon:"🧍‍♂️  🤲  │",
+ endIcon:"🧍‍♂️↘  🤲│"
+},
+"Chair Sit-to-Stand":{
+ start:"Sit near the front of a stable chair. Feet flat, about hip-width apart.",
+ end:"Lean slightly forward, drive through the whole foot, and stand tall.",
+ motion:"Sit → stand",
+ startIcon:"🪑🧍",
+ endIcon:"🧍‍♂️"
+},
+"Band Row":{
+ start:"Stand or sit tall with the band securely anchored in front. Arms extended.",
+ end:"Pull hands toward your lower ribs while squeezing the shoulder blades, then return slowly.",
+ motion:"Hands travel toward ribs",
+ startIcon:"🧍‍♂️━━",
+ endIcon:"🧍‍♂️≪"
+},
+"Elevated Plank":{
+ start:"Hands or forearms on a stable elevated surface. Step feet back until your body forms a straight line.",
+ end:"Hold that straight line without sagging or piking.",
+ motion:"Hold position",
+ startIcon:"▰  🧍‍♂️",
+ endIcon:"▰  ━━━"
+},
+"Incline/Wall Push-up":{
+ start:"Hands on a stable wall or elevated surface. Step back until your body is in one straight line.",
+ end:"Lower your chest toward the surface, then press away without losing body position.",
+ motion:"Chest toward surface → press away",
+ startIcon:"🧍‍♂️  🤲▰",
+ endIcon:"🧍‍♂️↘🤲▰"
+},
+"Supported Squat":{
+ start:"Stand with feet comfortable, lightly holding a stable support in front.",
+ end:"Sit hips down and back to a comfortable depth, then stand tall.",
+ motion:"Hips travel down, then up",
+ startIcon:"🧍‍♂️🤝",
+ endIcon:"🏋️‍♂️↘"
+},
+"Dead Bug Regression":{
+ start:"Lie on your back with knees bent. Gently brace your core and keep your back controlled.",
+ end:"Move one limb slowly away, then return without letting your lower back arch.",
+ motion:"One limb moves away and returns",
+ startIcon:"🛌",
+ endIcon:"🛌↗"
+},
+"Feet-Assisted Dip Support":{
+ start:"Stand between dip bars with both feet on the floor. Grip the bars and straighten your arms.",
+ end:"Press down into the bars and unload some bodyweight while your feet still assist.",
+ motion:"Push bars down, body becomes lighter",
+ startIcon:"║🧍‍♂️║",
+ endIcon:"║⬆️║"
+},
+"Supported Single-Leg Stand":{
+ start:"Stand beside a stable support with fingertips available.",
+ end:"Lift one foot slightly and balance on the other leg while staying tall.",
+ motion:"One foot leaves floor",
+ startIcon:"🧍‍♂️🤏",
+ endIcon:"🦩🤏"
+},
+"Seated Tuck Compression":{
+ start:"Sit tall with legs in front and hands beside your thighs.",
+ end:"Brace and lift one or both heels slightly from the floor without leaning far back.",
+ motion:"Heels lift upward",
+ startIcon:"🧘‍♂️",
+ endIcon:"🧘‍♂️⬆️"
+},
+"Dip-Bar Assisted Support":{
+ start:"Stand between the dip bars with feet on the floor and arms straight.",
+ end:"Press firmly into the bars while reducing how much help your feet provide.",
+ motion:"Feet assist less as arms support more",
+ startIcon:"║🧍‍♂️║",
+ endIcon:"║⬆️║"
+},
+"Frog Stand Lean Prep":{
+ start:"Hands flat on the floor, fingers spread. Knees bent, feet remain on the floor.",
+ end:"Shift your shoulders slightly forward over your hands while keeping your feet down.",
+ motion:"Shoulders shift forward",
+ startIcon:"🐸  🤲",
+ endIcon:"🐸↘🤲"
+},
+"Calf Raise Supported":{
+ start:"Stand tall while lightly holding a support. Feet flat.",
+ end:"Rise onto the balls of your feet, pause, then lower slowly.",
+ motion:"Heels rise and lower",
+ startIcon:"🧍‍♂️",
+ endIcon:"🧍‍♂️⬆️"
+},
+"Wrist Controlled Rocks":{
+ start:"Hands on a wall, bench, or floor with fingers spread.",
+ end:"Gently shift bodyweight forward and backward through a comfortable wrist range.",
+ motion:"Weight shifts over wrists",
+ startIcon:"🤲",
+ endIcon:"🤲↔"
+},
+"Band Shoulder Rotation":{
+ start:"Hold a very light band with the elbow controlled and shoulder relaxed.",
+ end:"Rotate through a comfortable range without letting the elbow drift.",
+ motion:"Forearm rotates around elbow",
+ startIcon:"💪",
+ endIcon:"💪↪"
+},
+"Cat-Cow":{
+ start:"Begin on hands and knees with a neutral spine.",
+ end:"Slowly round the spine, then reverse into a comfortable extension.",
+ motion:"Spine rounds ↔ extends",
+ startIcon:"🐈",
+ endIcon:"🐈↕"
+},
+"90/90 Hip Switch":{
+ start:"Sit with both knees bent in a 90/90 position. Hands may support you behind.",
+ end:"Rotate both knees toward the opposite side under control.",
+ motion:"Knees rotate side to side",
+ startIcon:"🧘",
+ endIcon:"🧘↔"
+},
+"Supported Deep Squat Hold":{
+ start:"Stand holding a stable support. Feet in a comfortable squat stance.",
+ end:"Lower into your comfortable squat depth and relax there while staying supported.",
+ motion:"Lower and hold",
+ startIcon:"🧍‍♂️🤝",
+ endIcon:"🏋️‍♂️⏸"
+},
+"Hamstring/Pike Stretch":{
+ start:"Sit or stand with knees softly bent and spine long.",
+ end:"Hinge forward from the hips until you feel a mild hamstring stretch.",
+ motion:"Torso hinges forward",
+ startIcon:"🧍‍♂️",
+ endIcon:"🙇‍♂️"
+},
+"Ankle Knee-to-Wall":{
+ start:"Face a wall with one foot flat and toes a short distance away.",
+ end:"Drive the knee toward the wall while keeping the heel planted.",
+ motion:"Knee travels forward, heel stays down",
+ startIcon:"🦶│",
+ endIcon:"🦵→│"
+}
+};
+
 const sessions=[
 {type:"BUILD",name:"Build A",desc:"Foundation strength • Push, pull, legs & core",warm:["Wrist circles — 20 sec","Arm swings + shoulder rolls — 30 sec","Easy sit-to-stand — 8 reps","Very easy wall push-up — 6 reps"],work:[
 ["Wall Push-up","2 × 6–10","reps","Stand facing a wall, hands around chest height. Bend elbows and bring chest toward wall, then press away.","Body straight|Elbows roughly 30–45°|Control both directions"],
@@ -160,36 +304,6 @@ function parseTarget(t){
   if(!m) return {sets:1,min:1,max:99};
   return {sets:+m[1],min:+m[2],max:+(m[3]||m[2])};
 }
-function stickFigure(type){
- const base=`<svg viewBox="0 0 520 210" role="img" aria-label="Movement illustration"><defs><filter id="g"><feGaussianBlur stdDeviation="5"/></filter></defs>
- <line x1="40" y1="180" x2="480" y2="180" stroke="#6f5b83" stroke-width="4" stroke-linecap="round"/>`;
- const person=(x,y,pose="stand")=>{
-   if(pose==="push") return `<circle cx="${x}" cy="${y-55}" r="14"/><line x1="${x-2}" y1="${y-40}" x2="${x+35}" y2="${y-5}"/><line x1="${x+35}" y1="${y-5}" x2="${x+70}" y2="${y+35}"/><line x1="${x+15}" y1="${y-25}" x2="${x+65}" y2="${y-25}"/><line x1="${x+70}" y1="${y+35}" x2="${x+98}" y2="${y+70}"/>`;
-   if(pose==="squat") return `<circle cx="${x}" cy="${y-60}" r="14"/><line x1="${x}" y1="${y-45}" x2="${x}" y2="${y}"/><line x1="${x}" y1="${y-22}" x2="${x-34}" y2="${y-2}"/><line x1="${x}" y1="${y}" x2="${x-30}" y2="${y+35}"/><line x1="${x-30}" y1="${y+35}" x2="${x+5}" y2="${y+68}"/><line x1="${x}" y1="${y}" x2="${x+32}" y2="${y+35}"/><line x1="${x+32}" y1="${y+35}" x2="${x+68}" y2="${y+68}"/>`;
-   if(pose==="row") return `<circle cx="${x}" cy="${y-60}" r="14"/><line x1="${x}" y1="${y-45}" x2="${x}" y2="${y+20}"/><line x1="${x}" y1="${y-15}" x2="${x-38}" y2="${y}"/><line x1="${x}" y1="${y-15}" x2="${x+38}" y2="${y}"/><line x1="${x}" y1="${y+20}" x2="${x-24}" y2="${y+68}"/><line x1="${x}" y1="${y+20}" x2="${x+24}" y2="${y+68}"/><line x1="${x-38}" y1="${y}" x2="${x-88}" y2="${y}" stroke-dasharray="7 6"/>`;
-   return `<circle cx="${x}" cy="${y-60}" r="14"/><line x1="${x}" y1="${y-45}" x2="${x}" y2="${y+20}"/><line x1="${x}" y1="${y-20}" x2="${x-35}" y2="${y+5}"/><line x1="${x}" y1="${y-20}" x2="${x+35}" y2="${y+5}"/><line x1="${x}" y1="${y+20}" x2="${x-22}" y2="${y+68}"/><line x1="${x}" y1="${y+20}" x2="${x+22}" y2="${y+68}"/>`;
- };
- let content="";
- if(type==="push") content=`<line x1="420" y1="28" x2="420" y2="180" stroke="#76559b" stroke-width="8"/>${person(165,95,"push")}${person(305,95,"push")}<path d="M230 60 L260 60" marker-end="url(#a)"/>`;
- else if(type==="squat") content=`${person(155,85)}${person(335,110,"squat")}`;
- else if(type==="row") content=`${person(180,85,"row")}${person(350,85,"row")}`;
- else if(type==="plank") content=`<circle cx="145" cy="92" r="14"/><line x1="160" y1="102" x2="330" y2="135"/><line x1="330" y1="135" x2="395" y2="176"/><line x1="190" y1="108" x2="160" y2="176"/>`;
- else if(type==="support") content=`<line x1="140" y1="70" x2="140" y2="180" stroke="#6b4c8d" stroke-width="7"/><line x1="380" y1="70" x2="380" y2="180" stroke="#6b4c8d" stroke-width="7"/>${person(260,82)}`;
- else if(type==="balance") content=`${person(260,85)}<line x1="260" y1="105" x2="305" y2="145"/>`;
- else if(type==="compression") content=`<circle cx="230" cy="70" r="14"/><line x1="230" y1="84" x2="230" y2="130"/><line x1="230" y1="130" x2="315" y2="145"/><line x1="230" y1="130" x2="285" y2="118"/><line x1="230" y1="105" x2="195" y2="155"/>`;
- else if(type==="frog") content=`<circle cx="250" cy="70" r="14"/><line x1="250" y1="84" x2="260" y2="125"/><line x1="260" y1="125" x2="220" y2="155"/><line x1="260" y1="125" x2="300" y2="155"/><line x1="248" y1="102" x2="205" y2="170"/><line x1="272" y1="102" x2="315" y2="170"/>`;
- else if(type==="calf") content=`${person(195,85)}${person(330,75)}<line x1="308" y1="170" x2="352" y2="170" stroke-width="7"/>`;
- else if(type==="deadbug") content=`<circle cx="190" cy="120" r="14"/><line x1="205" y1="120" x2="310" y2="120"/><line x1="250" y1="120" x2="220" y2="65"/><line x1="270" y1="120" x2="310" y2="70"/><line x1="285" y1="120" x2="330" y2="155"/>`;
- else if(type==="catcow") content=`<circle cx="155" cy="105" r="14"/><path d="M170 110 Q255 65 330 118" fill="none"/><line x1="210" y1="105" x2="195" y2="175"/><line x1="300" y1="108" x2="315" y2="175"/>`;
- else if(type==="hips") content=`<circle cx="260" cy="60" r="14"/><line x1="260" y1="74" x2="260" y2="125"/><line x1="260" y1="125" x2="205" y2="155"/><line x1="205" y1="155" x2="160" y2="150"/><line x1="260" y1="125" x2="310" y2="155"/><line x1="310" y1="155" x2="355" y2="145"/>`;
- else if(type==="pike") content=`<circle cx="235" cy="80" r="14"/><line x1="245" y1="92" x2="300" y2="125"/><line x1="300" y1="125" x2="390" y2="160"/><line x1="300" y1="125" x2="195" y2="165"/>`;
- else if(type==="ankle") content=`<line x1="390" y1="45" x2="390" y2="180" stroke="#76559b" stroke-width="7"/><line x1="250" y1="165" x2="360" y2="165"/><line x1="275" y1="165" x2="345" y2="95"/>`;
- else if(type==="wrist") content=`<line x1="160" y1="150" x2="360" y2="150"/><line x1="210" y1="70" x2="235" y2="150"/><line x1="310" y1="70" x2="285" y2="150"/><path d="M245 95 Q260 70 275 95" fill="none"/>`;
- else if(type==="shoulder") content=`${person(260,85)}<path d="M205 90 Q260 25 315 90" fill="none"/>`;
- else content=person(260,85);
- return base+`<g fill="none" stroke="#c69cff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">${content}</g></svg>`;
-}
-
 function renderToday(){
  let s=sessions[state.sessionIndex%5];
  $("#sessionType").textContent=s.type; $("#sessionName").textContent=s.name; $("#sessionDesc").textContent=s.desc;
@@ -230,9 +344,20 @@ function feedback(el,e){
 }
 
 function showRef(e){
- const meta=exerciseMeta[e[0]]||{mistakes:["Move slowly and stay in a comfortable range"],regression:"Use an easier version",progression:"Use a slightly harder version",visual:"stand"};
+ const meta=exerciseMeta[e[0]]||{mistakes:["Move slowly and stay in a comfortable range"],regression:"Use an easier version",progression:"Use a slightly harder version"};
+ const guide=movementGuide[e[0]]||{
+   start:"Set up in a comfortable, stable position.",
+   end:"Move slowly through the described range while keeping control.",
+   motion:"Controlled movement",
+   startIcon:"START",
+   endIcon:"END"
+ };
  $("#refTitle").textContent=e[0];
- $("#refDemo").innerHTML=stickFigure(meta.visual);
+ $("#refStartIcon").textContent=guide.startIcon;
+ $("#refEndIcon").textContent=guide.endIcon;
+ $("#refStart").textContent=guide.start;
+ $("#refEnd").textContent=guide.end;
+ $("#refMotion").textContent=guide.motion;
  $("#refHow").textContent=e[3];
  $("#refCues").innerHTML=e[4].split("|").map(x=>`<li>${x}</li>`).join("");
  $("#refMistakes").innerHTML=meta.mistakes.map(x=>`<li>${x}</li>`).join("");
