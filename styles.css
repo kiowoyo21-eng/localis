@@ -114,3 +114,5 @@
   .move-arrow{padding:2px 0}
   .move-arrow span{transform:rotate(90deg);font-size:28px}
 }
+
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.equipment-note{font-size:12px;line-height:1.4}.adaptive-badge{font-size:11px;color:#c8b0ea;margin-top:5px}.why{font-size:11px;color:#968aa2;margin-top:3px}.skill-path{font-size:12px;color:#c5a4f5;margin-top:5px;line-height:1.5}@media(max-width:700px){.profile-grid{grid-template-columns:1fr}}

@@ -7,10 +7,10 @@ const exerciseMeta = {
   progression:"Higher incline push-up",
   visual:"push"
 },
-"Chair Sit-to-Stand":{
-  mistakes:["Dropping onto the chair","Knees collapsing inward","Using momentum to stand"],
-  regression:"Use a higher chair + hand support",
-  progression:"Lower chair / supported squat",
+"Assisted Squat":{
+  mistakes:["Removing assistance too early","Pulling mostly with the arms","Knees collapsing inward","Dropping too quickly"],
+  regression:"Use more hand support / reduce squat depth",
+  progression:"Use less hand support",
   visual:"squat"
 },
 "Band Row":{
@@ -132,12 +132,12 @@ const movementGuide = {
  startIcon:"🧍‍♂️  🤲  │",
  endIcon:"🧍‍♂️↘  🤲│"
 },
-"Chair Sit-to-Stand":{
- start:"Sit near the front of a stable chair. Feet flat, about hip-width apart.",
- end:"Lean slightly forward, drive through the whole foot, and stand tall.",
- motion:"Sit → stand",
- startIcon:"🪑🧍",
- endIcon:"🧍‍♂️"
+"Assisted Squat":{
+ start:"Stand facing a stable support with both hands holding it. Feet in a comfortable squat stance.",
+ end:"Lower into a controlled squat using as much hand assistance as needed, then stand back up.",
+ motion:"Squat down with assistance → stand",
+ startIcon:"START",
+ endIcon:"END"
 },
 "Band Row":{
  start:"Stand or sit tall with the band securely anchored in front. Arms extended.",
@@ -270,7 +270,7 @@ const movementGuide = {
 const sessions=[
 {type:"BUILD",name:"Build A",desc:"Foundation strength • Push, pull, legs & core",warm:["Wrist circles — 20 sec","Arm swings + shoulder rolls — 30 sec","Easy sit-to-stand — 8 reps","Very easy wall push-up — 6 reps"],work:[
 ["Wall Push-up","2 × 6–10","reps","Stand facing a wall, hands around chest height. Bend elbows and bring chest toward wall, then press away.","Body straight|Elbows roughly 30–45°|Control both directions"],
-["Chair Sit-to-Stand","2 × 8–10","reps","Sit to a stable chair under control, then stand tall without throwing your torso forward.","Knees track with toes|Whole foot planted|Stand tall"],
+["Assisted Squat","2 × 6–10","reps","Face a stable support such as your dip bars, a sturdy counter, or rail. Hold it with both hands and squat only as deep as you can control, using your arms as much as needed.","Use support freely|Whole foot planted|Knees follow toes|Controlled depth"],
 ["Band Row","2 × 8–12","reps","Anchor the band safely around a stable point, pull handles toward your ribs, then return slowly.","Shoulders away from ears|Squeeze shoulder blades|Don't jerk"],
 ["Elevated Plank","2 × 15–20","sec","Place forearms or hands on a stable elevated surface and hold a straight body line.","Brace abs|Squeeze glutes|Don't sag"]],cool:["Easy chest opening — 30 sec","Slow breathing — 30 sec"]},
 {type:"LIGHT",name:"Light A",desc:"Technique • Balance • joint control",warm:["Wrist prep — 30 sec","Shoulder circles — 30 sec","Hip circles — 30 sec"],work:[
@@ -395,3 +395,68 @@ $("#saveProfile").onclick=()=>{state.profile.height=$("#height").value;state.pro
 $("#prevMonth").onclick=()=>{view.setMonth(view.getMonth()-1);renderCalendar()};
 $("#nextMonth").onclick=()=>{view.setMonth(view.getMonth()+1);renderCalendar()};
 renderAll();
+
+/* LOCALISTHENICS V4 adaptive local engine */
+const ADAPTIVE_DB={
+ push:[
+  {n:"Wall Push-up",min:6,max:10,sets:2,u:"reps"},
+  {n:"High Incline Push-up",min:6,max:10,sets:2,u:"reps"},
+  {n:"Low Incline Push-up",min:6,max:10,sets:2,u:"reps"},
+  {n:"Knee Push-up",min:5,max:10,sets:2,u:"reps"},
+  {n:"Push-up",min:5,max:10,sets:2,u:"reps"}],
+ pull:[
+  {n:"Band Row",min:8,max:12,sets:2,u:"reps",req:"bands"},
+  {n:"Dumbbell Row",min:8,max:12,sets:2,u:"reps/side",req:"db"},
+  {n:"Band Row — Stronger Tension",min:8,max:12,sets:2,u:"reps",req:"bands"}],
+ squat:[
+  {n:"Chair Sit-to-Stand",min:8,max:10,sets:2,u:"reps"},
+  {n:"Supported Squat",min:8,max:12,sets:2,u:"reps"},
+  {n:"Bodyweight Squat",min:8,max:15,sets:2,u:"reps"},
+  {n:"Goblet Squat",min:8,max:12,sets:2,u:"reps",req:"db"}],
+ core:[
+  {n:"Elevated Plank",min:15,max:25,sets:2,u:"sec"},
+  {n:"Floor Plank",min:15,max:30,sets:2,u:"sec"},
+  {n:"Dead Bug",min:5,max:8,sets:2,u:"reps/side"}],
+ support:[
+  {n:"Feet-Assisted Dip Support",min:10,max:20,sets:3,u:"sec",req:"dip"},
+  {n:"Lightly Assisted Dip Support",min:10,max:20,sets:3,u:"sec",req:"dip"},
+  {n:"Dip-Bar Support Hold",min:8,max:15,sets:3,u:"sec",req:"dip"}],
+ balance:[{n:"Supported Single-Leg Stand",min:20,max:30,sets:2,u:"sec/side"},{n:"Single-Leg Stand",min:20,max:40,sets:2,u:"sec/side"}],
+ compression:[{n:"Seated One-Heel Compression",min:6,max:10,sets:2,u:"reps/side"},{n:"Seated Tuck Compression",min:6,max:10,sets:2,u:"reps"}]
+};
+const adaptiveGuides={
+ "High Incline Push-up":["Hands on a stable high surface; body straight.","Lower chest toward the surface with elbows controlled.","Press back without bending at the hips."],
+ "Low Incline Push-up":["Hands on a lower stable surface; brace your body.","Lower your chest while keeping one body line.","Press back with control."],
+ "Knee Push-up":["Hands on floor, knees down, straight line knees-to-shoulders.","Lower chest toward floor.","Press back without folding at the hips."],
+ "Push-up":["Hands on floor, legs straight, whole body braced.","Lower chest toward floor under control.","Press until arms are straight; chest and hips rise together."],
+ "Dumbbell Row":["Support one hand on a stable surface; hold a dumbbell in the other hand.","Pull the dumbbell toward your hip/lower ribs.","Lower slowly without twisting the torso."],
+ "Band Row — Stronger Tension":["Use a stronger band or more tension in a stable stance.","Pull toward your lower ribs.","Return slowly without shrugging."],
+ "Bodyweight Squat":["Stand in a comfortable squat stance.","Sit down between your legs to a controlled depth.","Drive through the whole foot to stand."],
+ "Goblet Squat":["Hold one dumbbell close to your chest.","Squat to a comfortable depth while keeping the load close.","Stand tall under control."],
+ "Floor Plank":["Forearms on floor, legs straight, ribs and hips controlled.","Brace and hold a straight line.","End before hips sag or shoulders lose position."],
+ "Dead Bug":["Lie on your back with hips/knees bent and core gently braced.","Extend opposite arm and leg slowly.","Return without letting the lower back arch."],
+ "Lightly Assisted Dip Support":["Stand between dip bars with light foot contact.","Press down and carry more weight through your arms.","Hold shoulders down and use only the foot help you need."],
+ "Dip-Bar Support Hold":["Support yourself between the bars with arms straight.","Push the bars down and keep shoulders away from ears.","Step down before form fails."],
+ "Single-Leg Stand":["Stand tall without holding support.","Lift one foot and balance with a soft standing knee.","Keep eyes forward and breathe."],
+ "Seated One-Heel Compression":["Sit tall with legs forward and hands beside thighs.","Lift one heel a little without swinging.","Lower slowly and switch sides."]
+};
+function equipOK(req){if(!req)return true;if(req==="db")return +(state.profile.dbCount||0)>0 && +(state.profile.dbWeight||0)>0;if(req==="bands")return (state.profile.bands||"light")!=="none";if(req==="dip")return (state.profile.dipBars||"yes")==="yes";if(req==="hang")return state.profile.hang==="yes";return true}
+function branchList(b){let a=ADAPTIVE_DB[b].filter(x=>equipOK(x.req));return a.length?a:[ADAPTIVE_DB[b][0]]}
+function currentNode(b){let a=branchList(b),i=Math.max(0,Math.min((state.adaptiveLevels||{})[b]||0,a.length-1));return {...a[i],branch:b}}
+function initAdaptive(){state.profile={height:"",weight:"",dbWeight:0,dbCount:2,bands:"light",dipBars:"yes",hang:"no",...(state.profile||{})};state.adaptiveLevels={push:0,pull:0,squat:0,core:0,support:0,balance:0,compression:0,...(state.adaptiveLevels||{})};save()}
+function makeDynamicGuide(e){let g=adaptiveGuides[e.n];if(g)return g;let old=movementGuide[e.n];if(old)return [old.start,old.motion,old.end];return ["Set up in a stable, comfortable position.","Move slowly through the prescribed range.","Finish before form breaks."]}
+function planV4(){let key=["BUILD A","LIGHT A","BUILD B","LIGHT B","FULL-BODY REHAB"][state.sessionIndex%5];if(key==="FULL-BODY REHAB")return null;let bs=key.startsWith("BUILD")?["push","squat","pull","core"]:["support","balance","compression"];return {key,type:key.startsWith("BUILD")?"BUILD":"LIGHT",work:bs.filter(b=>b!=="support"||equipOK("dip")).map(currentNode)} }
+function evalV4(e,sets){let x=sets.filter(s=>s.actual!=="");if(!x.length)return {d:"none",t:""};if(x.some(s=>s.pain==="Sharp"))return {d:"regress",t:"Sharp pain logged → do not progress this movement; use an easier or different option next time."};if(x.some(s=>+s.actual===1))return {d:"regress",t:"Only 1 rep/second in a set → too hard. Regress next time."};if(x.some(s=>+s.actual<e.min))return {d:"regress",t:"Below target → regress or add assistance next time."};if(x.length===e.sets&&x.every(s=>+s.actual>=e.max&&+s.rir>=3&&s.form==="Clean"&&s.pain==="No"))return {d:"progress",t:"Top of the range on every set, clean, with ≥3 RIR → progress next time."};if(x.some(s=>+s.rir<=1&&+s.actual>0))return {d:"hold",t:"Too close to failure → keep this level. Frequent practice needs reserve."};if(x.some(s=>s.form==="Broke down"))return {d:"regress",t:"Form broke down → use an easier version next time."};return {d:"hold",t:"Good working range → keep this level and build clean capacity."}}
+function applyV4(b,d){if(!ADAPTIVE_DB[b])return;let a=branchList(b),i=Math.max(0,Math.min(state.adaptiveLevels[b]||0,a.length-1));if(d==="progress"&&i<a.length-1)i++;if(d==="regress"&&i>0)i--;state.adaptiveLevels[b]=i}
+const oldRenderTodayV3=renderToday;
+renderToday=function(){let p=planV4();if(!p){oldRenderTodayV3();let badge=document.createElement("div");badge.className="adaptive-badge";badge.textContent="Adaptive rehab stays full-body: wrists • shoulders • spine • hips • knees • ankles • flexibility";$("#sessionDesc").after(badge);return}
+ $("#sessionType").textContent=p.type;$("#sessionName").textContent=p.key;$("#sessionDesc").textContent=p.type==="BUILD"?"Adaptive foundation strength • selected from your current nodes":"Easy technique • support • balance • compression";$("#doneCount").textContent=0;
+ $("#warmup").innerHTML=(p.type==="BUILD"?["Wrist + shoulder prep — 30 sec","Ankle + hip circles — 30 sec","Easy rehearsal of first movement — 4–6 reps"]:["Wrist prep — 30 sec","Shoulder circles — 30 sec","Hip + ankle mobility — 30 sec"]).map(x=>`<div class="simple">✓ ${x}</div>`).join("");$("#cooldown").innerHTML=`<div class="simple">○ Easy breathing — 30 sec</div><div class="simple">○ Gentle stretch — 30 sec</div>`;
+ $("#workout").innerHTML=p.work.map((e,i)=>`<div class="exercise" data-i="${i}"><div class="ex-top"><div><div class="ex-name">${e.n}</div><div class="target">Target: ${e.sets} × ${e.min}${e.max!==e.min?"–"+e.max:""} ${e.u}</div><div class="why">Chosen from your ${e.branch} branch${e.req?" • uses "+e.req:""}</div></div><button class="ref">How?</button></div>${Array.from({length:e.sets},(_,s)=>`<div class="set-card"><div class="set-title">Set ${s+1}</div><div class="log"><label>Actual ${e.u}<input class="actual" inputmode="numeric" type="number" min="0" placeholder="${e.u}"></label><label>RIR<input class="rir" inputmode="numeric" type="number" min="0" max="10" placeholder="2–4"></label><label>Form<select class="form"><option>Clean</option><option>Shaky</option><option>Broke down</option></select></label><label>Pain<select class="pain"><option>No</option><option>Mild</option><option>Sharp</option></select></label></div></div>`).join("")}<div class="feedback"></div></div>`).join("");
+ $$(".exercise").forEach(el=>{let e=p.work[+el.dataset.i];el.querySelector(".ref").onclick=()=>{let g=makeDynamicGuide(e);$("#refTitle").textContent=e.n;$("#refStartIcon").textContent="START";$("#refEndIcon").textContent="END";$("#refStart").textContent=g[0];$("#refMotion").textContent=g[1];$("#refEnd").textContent=g[2];$("#refHow").textContent=`Target: ${e.sets} × ${e.min}${e.max!==e.min?"–"+e.max:""} ${e.u}`;$("#refCues").innerHTML=`<li>Move under control</li><li>Stop before form breaks</li><li>Keep 2–4 reps in reserve on normal work</li>`;$("#refMistakes").innerHTML=`<li>Grinding to failure</li><li>Rushing reps</li><li>Ignoring sharp pain</li>`;let a=branchList(e.branch),ix=a.findIndex(v=>v.n===e.n);$("#refRegression").textContent=ix>0?a[ix-1].n:"Use more assistance / easier setup";$("#refProgression").textContent=ix<a.length-1?a[ix+1].n:"Build more clean capacity";$("#refDialog").showModal()};["input","change"].forEach(ev=>el.addEventListener(ev,()=>{let sets=[...el.querySelectorAll(".set-card")].map(r=>({actual:r.querySelector(".actual").value,rir:r.querySelector(".rir").value,form:r.querySelector(".form").value,pain:r.querySelector(".pain").value}));el.querySelector(".feedback").textContent=evalV4(e,sets).t;$("#doneCount").textContent=$$(".set-card .actual").filter(x=>x.value!=="").length}))}) }
+const finishV3=$("#finish").onclick;
+$("#finish").onclick=()=>{let p=planV4();if(!p){finishV3();return}let logs=[];$$(".exercise").forEach((el,i)=>{let e=p.work[i],sets=[...el.querySelectorAll(".set-card")].map((r,s)=>({set:s+1,actual:r.querySelector(".actual").value,rir:r.querySelector(".rir").value,form:r.querySelector(".form").value,pain:r.querySelector(".pain").value})),ev=evalV4(e,sets);logs.push({branch:e.branch,name:e.n,sets,decision:ev.d});applyV4(e.branch,ev.d)});state.history.push({date:new Date().toISOString().slice(0,10),type:p.type,name:p.key,logs});state.sessionIndex=(state.sessionIndex+1)%5;save();renderAll()};
+renderSkills=function(){let names={push:"Push",pull:"Pull",squat:"Squat",core:"Core",support:"Dip-Bar Support",balance:"Balance",compression:"L-Sit Compression"};$("#skillTree").innerHTML=Object.keys(names).map(b=>{if(b==="support"&&!equipOK("dip"))return `<div class="skill locked"><b>${names[b]}</b><div class="skill-path">Unavailable — enable dip bars in Profile.</div></div>`;let a=branchList(b),i=Math.max(0,Math.min(state.adaptiveLevels[b]||0,a.length-1));return `<div class="skill ${i===a.length-1?"unlocked":"training"}"><b>${names[b]}</b><div class="skill-path">${a.map((x,j)=>(j<i?"✓ ":j===i?"→ ":"○ ")+x.n).join(" • ")}</div></div>`}).join("")};
+$("#profileBtn").onclick=()=>{$("#height").value=state.profile.height||"";$("#weight").value=state.profile.weight||"";$("#dbWeight").value=state.profile.dbWeight||0;$("#dbCount").value=String(state.profile.dbCount??2);$("#bands").value=state.profile.bands||"light";$("#dipBars").value=state.profile.dipBars||"yes";$("#hang").value=state.profile.hang||"no";$("#profileDialog").showModal()};
+$("#saveProfile").onclick=()=>{state.profile.height=$("#height").value;state.profile.weight=$("#weight").value;state.profile.dbWeight=+$("#dbWeight").value||0;state.profile.dbCount=+$("#dbCount").value;state.profile.bands=$("#bands").value;state.profile.dipBars=$("#dipBars").value;state.profile.hang=$("#hang").value;Object.keys(state.adaptiveLevels).forEach(b=>state.adaptiveLevels[b]=Math.min(state.adaptiveLevels[b],branchList(b).length-1));save()};
+initAdaptive();renderAll();
